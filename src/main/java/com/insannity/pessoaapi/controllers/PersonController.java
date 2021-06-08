@@ -2,6 +2,7 @@ package com.insannity.pessoaapi.controllers;
 
 import com.insannity.pessoaapi.dto.MessageResponseDTO;
 import com.insannity.pessoaapi.dto.PersonDTO;
+import com.insannity.pessoaapi.exceptions.PersonNotFoundException;
 import com.insannity.pessoaapi.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,12 @@ public class PersonController {
     public List<PersonDTO> listAll (){
         return service.findAll();
     }
+
+    @GetMapping("/{id}")
+    public PersonDTO findById(@PathVariable Long id) throws PersonNotFoundException {
+        return service.findById(id);
+    }
+
 
 
 }
