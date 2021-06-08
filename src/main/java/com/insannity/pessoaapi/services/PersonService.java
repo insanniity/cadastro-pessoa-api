@@ -8,13 +8,17 @@ import com.insannity.pessoaapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PersonService {
 
-    private final PersonMapper mapper= PersonMapper.INSTANCE;
+    private PersonMapper mapper = PersonMapper.INSTANCE;
 
     @Autowired
     private PersonRepository repository;
+
 
     public MessageResponseDTO save(PersonDTO personDTO){
         Person personSaved = mapper.toModel(personDTO);
@@ -23,4 +27,8 @@ public class PersonService {
     }
 
 
+    public List<PersonDTO> findAll() {
+        List<Person> peoples = repository.findAll();
+        return peoples.stream().map(mapper::toDTO).collect(Collectors.toList());
+    }
 }
