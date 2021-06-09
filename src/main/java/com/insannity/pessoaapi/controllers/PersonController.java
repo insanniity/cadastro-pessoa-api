@@ -4,6 +4,7 @@ import com.insannity.pessoaapi.dto.MessageResponseDTO;
 import com.insannity.pessoaapi.dto.PersonDTO;
 import com.insannity.pessoaapi.exceptions.PersonNotFoundException;
 import com.insannity.pessoaapi.services.PersonService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/peoples")
+@AllArgsConstructor
 public class PersonController {
 
     @Autowired
